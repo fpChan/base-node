@@ -15,7 +15,7 @@ services:
     env_file:
       # select your network here:
 #      - .env.sepolia
-#      - .env.mainnet
+      - .env.mainnet
   node:
     build: .
     depends_on:
@@ -30,4 +30,4 @@ services:
     env_file:
       # select your network here:
 #      - .env.sepolia
-#      - .env.mainnet
+      - .env.mainnet
