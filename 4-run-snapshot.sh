@@ -10,4 +10,25 @@ snap_shot_base() {
     docker compose up --build
 }
 
-snap_shot_base
+snap_shot_new(){
+  start_time=$(date +%s)
+  # 设置脚本持续时间，单位为秒（10小时）
+  duration=$((10 * 60 * 60))
+
+  filename="base-mainnet-full-1713591547.tar.gz"
+  path=/data/base-chain-node
+
+  while [ $(($(date +%s) - start_time)) -lt $duration ]; do
+  	cd $path
+  	newfilename=$(curl -s https://mainnet-full-snapshots.base.org/latest)
+  	if [ "$newfilename" != "$filename" ]; then
+  		aria2c -o "$newfilename" -x 16 -s 16   "https://mainnet-full-snapshots.base.org/$newfilename"
+  		mkdir -p $path/chain-data
+  		tar -xvf "$newfilename"  -C $path/chain-data --use-compress-program="pigz -p 16"
+  	fi
+  	echo $newfilename
+  	sleep 120
+  done
+}
+
+
