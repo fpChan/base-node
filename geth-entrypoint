@@ -46,7 +46,7 @@ exec ./geth \
     --http.vhosts="*" \
     --http.addr=0.0.0.0 \
     --http.port="$RPC_PORT" \
-    --http.api=web3,debug,eth,net,engine \
+    --http.api=web3,debug,eth,txpool,net,engine \
     --authrpc.addr=0.0.0.0 \
     --authrpc.port="$AUTHRPC_PORT" \
     --authrpc.vhosts="*" \
@@ -55,7 +55,7 @@ exec ./geth \
     --ws.addr=0.0.0.0 \
     --ws.port="$WS_PORT" \
     --ws.origins="*" \
-    --ws.api=debug,eth,net,engine \
+    --ws.api=debug,eth,txpool,net,engine \
     --metrics \
     --metrics.addr=0.0.0.0 \
     --metrics.port="$METRICS_PORT" \
@@ -67,5 +67,4 @@ exec ./geth \
     --rollup.halt=major \
     --op-network="$OP_NODE_NETWORK" \
     --port="$P2P_PORT" \
-    --rollup.disabletxpoolgossip=true \
     $ADDITIONAL_ARGS # intentionally unquoted
