@@ -13,7 +13,7 @@ services:
     networks:
         - eth_shared_network
     volumes:
-      - /root/base-chain-node/chain-data-sync/snapshots/mainnet/download/geth:/data
+      - /data/chain-data/base-data/base-main-data/snapshots/mainnet/download/geth:/data
     env_file:
       # select your network here:
 #      - .env.sepolia
