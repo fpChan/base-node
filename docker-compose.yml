@@ -4,11 +4,11 @@ services:
       context: .
       dockerfile: ${CLIENT}/Dockerfile
     ports:
-      - 22301:8545       # RPC
-      - 22302:8546       # websocket
-      - 22303:30303     # P2P TCP (currently unused)
-      - 22303:30303/udp # P2P UDP (currently unused)
-      - 22304:6060       # metrics
+      - 39601:8545       # RPC
+      - 39602:8546       # websocket
+      - 39603:30303     # P2P TCP (currently unused)
+      - 39603:30303/udp # P2P UDP (currently unused)
+      - 39604:6060       # metrics
     command: [ "bash", "./execution-entrypoint" ]
     networks:
         - eth_shared_network
@@ -25,11 +25,11 @@ services:
     depends_on:
       - execution
     ports:
-      - 22305:8545     # RPC
-      - 22306:9222     # P2P TCP
-      - 22306:9222/udp # P2P UDP
-      - 22307:7300     # metrics
-      - 22308:6060     # pprof
+      - 39605:8545     # RPC
+      - 39606:9222     # P2P TCP
+      - 39606:9222/udp # P2P UDP
+      - 39607:7300     # metrics
+      - 39608:6060     # pprof
     command: [ "bash", "./op-node-entrypoint" ]
     networks:
         - eth_shared_network
