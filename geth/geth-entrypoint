@@ -45,6 +45,11 @@ fi
 exec ./geth \
     --datadir="$GETH_DATA_DIR" \
     --verbosity="$VERBOSITY" \
+    --db.engine=pebble \
+    --state.scheme=path \
+    --history.transactions=235000 \
+    --history.state=9000 \
+    --cache=8192 \
     --http \
     --http.corsdomain="*" \
     --http.vhosts="*" \

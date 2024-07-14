@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  base-prune:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: base-prune
+    command: [ "bash", "-c", "/app/geth snapshot prune-state --datadir /data" ]
+    networks:
+      - eth_shared_network
+    volumes:
+      - /data/chain-data/base-data/base-main-data/snapshots/mainnet/download/geth:/data
+    env_file:
+      - .env.mainnet
+
+
+networks:
+  eth_shared_network:
+    external: true
