@@ -4,9 +4,10 @@ services:
   base-prune:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: ${CLIENT}/Dockerfile
     container_name: base-prune
-    command: [ "bash", "-c", "/app/geth snapshot prune-state --datadir /data" ]
+    command: [ "bash", "-c", "/app/geth --datadir /data --db.engine=pebble --state.scheme=path --history.transactions=23500 --history.state=900 removedb --remove.state=false --remove.chain=true" ]
+#    command: [ "bash", "-c", "/app/geth --datadir /data --db.engine=pebble --state.scheme=path --history.transactions=23500 --history.state=900 snapshot prune-state" ]
     networks:
       - eth_shared_network
     volumes:
