@@ -47,8 +47,8 @@ exec ./geth \
     --verbosity="$VERBOSITY" \
     --db.engine=pebble \
     --state.scheme=path \
-    --history.transactions=235000 \
-    --history.state=9000 \
+    --history.transactions=23500 \
+    --history.state=900 \
     --cache=8192 \
     --http \
     --http.corsdomain="*" \
