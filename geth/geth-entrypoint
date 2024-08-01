@@ -49,7 +49,7 @@ exec ./geth \
     --state.scheme=path \
     --history.transactions=23500 \
     --history.state=900 \
-    --cache=8192 \
+    --cache=4096 \
     --http \
     --http.corsdomain="*" \
     --http.vhosts="*" \
