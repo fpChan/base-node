@@ -1,4 +1,4 @@
-FROM golang:1.23 AS op
+FROM golang:1.24 AS op
 
 RUN curl -sSfL 'https://just.systems/install.sh' | bash -s -- --to /usr/local/bin
 
@@ -13,7 +13,7 @@ RUN . /tmp/versions.env && git clone $OP_NODE_REPO --branch $OP_NODE_TAG --singl
 RUN . /tmp/versions.env && cd op-node && \
     make VERSION=$OP_NODE_TAG op-node
 
-FROM golang:1.23 AS geth
+FROM golang:1.24 AS geth
 
 WORKDIR /app
 
@@ -25,7 +25,7 @@ RUN . /tmp/versions.env && git clone $OP_GETH_REPO --branch $OP_GETH_TAG --singl
 
 RUN go run build/ci.go install -static ./cmd/geth
 
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 
 RUN apt-get update && \
     apt-get install -y jq curl supervisor && \

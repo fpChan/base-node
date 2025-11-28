@@ -19,10 +19,6 @@ GETH_CACHE_DATABASE="${GETH_CACHE_DATABASE:-20}"
 GETH_CACHE_GC="${GETH_CACHE_GC:-12}"
 GETH_CACHE_SNAPSHOT="${GETH_CACHE_SNAPSHOT:-24}"
 GETH_CACHE_TRIE="${GETH_CACHE_TRIE:-44}"
-GETH_TXPOOL_GLOBALQUEUE="${GETH_TXPOOL_GLOBALQUEUE:-6144}"
-GETH_TXPOOL_GLOBALSLOTS="${GETH_TXPOOL_GLOBALSLOTS:-30072}"
-GETH_TXPOOL_LIFETIME="${GETH_TXPOOL_LIFETIME:-10m}"
-TXPOOL_PRICE_LIMIT="${TXPOOL_PRICE_LIMIT:-50}"
 
 if [[ -z "$OP_NODE_NETWORK" ]]; then
     echo "expected OP_NODE_NETWORK to be set" 1>&2
@@ -60,7 +56,7 @@ exec ./geth \
     --state.scheme=path \
     --history.transactions=23500 \
     --history.state=900 \
-    --cache=4096 \
+    --cache=12288 \
     --http \
     --http.corsdomain="*" \
     --http.vhosts="*" \
@@ -75,7 +71,7 @@ exec ./geth \
     --ws.addr=0.0.0.0 \
     --ws.port="$WS_PORT" \
     --ws.origins="*" \
-    --ws.api=debug,eth,txpool,net,engine \
+    --ws.api=web3,eth,txpool,net,engine \
     --metrics \
     --metrics.addr=0.0.0.0 \
     --metrics.port="$METRICS_PORT" \
