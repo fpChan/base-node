@@ -55,7 +55,7 @@ exec ./geth \
     --db.engine=pebble \
     --state.scheme=path \
     --history.transactions=23500 \
-    --history.state=3000 \
+    --history.state=2000 \
     --cache=12288 \
     --http \
     --http.corsdomain="*" \
