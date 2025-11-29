@@ -56,7 +56,7 @@ exec ./geth \
     --state.scheme=path \
     --history.transactions=23500 \
     --history.state=900 \
-    --cache=7168 \
+    --cache=10240 \
     --http \
     --http.corsdomain="*" \
     --http.vhosts="*" \
