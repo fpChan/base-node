@@ -18,6 +18,8 @@ services:
       # select your network here:
 #      - .env.sepolia
       - .env.mainnet
+    cpuset: "22-28" # 核心 22-28 (7个)
+
   node:
     build:
       context: .
@@ -37,6 +39,7 @@ services:
       # select your network here:
 #      - .env.sepolia
       - .env.mainnet
+    cpuset: "22-28" # 核心 22-28 (7个)
 
 networks:
     eth_shared_network:
